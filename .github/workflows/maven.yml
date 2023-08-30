@@ -16,7 +16,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 #    container: aglimage/agl:agl-ubuntu-gcc9.4.0-py3.8-cuda11.8-pytorch2.0.1-0825
     steps:
@@ -28,11 +27,11 @@ jobs:
 #        distribution: 'temurin'
 #        java-version: '8'
 #        cache: 'maven'
-    - name: free disk space
+    - name: free disk space before starting docker
       run: |
-        rm -rf /opt/hostedtoolcache
+        rm -rf /opt/hostedtoolcache && sh start_docker_with_image.sh
         sh print_resource.sh
-    - name: run docker
-      uses: docker://aglimage/agl:agl-ubuntu-gcc9.4.0-py3.8-cuda11.8-pytorch2.0.1-0825
+#    - name: run docker
+#      uses: docker://aglimage/agl:agl-ubuntu-gcc9.4.0-py3.8-cuda11.8-pytorch2.0.1-0825
     - name: Build with Maven
       run: mvn -B package --file pom.xml
