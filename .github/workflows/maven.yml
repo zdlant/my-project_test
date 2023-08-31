@@ -31,11 +31,11 @@ jobs:
     container: 
       image: aglimage/agl:agl-ubuntu-gcc9.4.0-py3.8-cuda11.8-pytorch2.0.1-0825
       options: --privileged
-    steps:
-      - name: pwd dir
-        run: |
-          pwd
-          ls
+      steps:
+        - name: pwd dir
+          run: |
+            pwd
+            ls
    
     
     
