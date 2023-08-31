@@ -29,8 +29,7 @@ jobs:
 #        cache: 'maven'
     - name: free disk space before starting docker
       run: |
-        rm -rf /opt/hostedtoolcache && sh start_docker.sh
-        sh print_resource.sh
+        rm -rf /opt/hostedtoolcache && sh print_resource.sh && sh start_docker.sh
 #    - name: run docker
 #      uses: docker://aglimage/agl:agl-ubuntu-gcc9.4.0-py3.8-cuda11.8-pytorch2.0.1-0825
     - name: Build with Maven
