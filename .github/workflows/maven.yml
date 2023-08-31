@@ -18,23 +18,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: free disk space before starting docker
-      run: |
-        rm -rf /opt/hostedtoolcache && sh print_resource.sh && ls && pwd
-    - uses: actions/checkout@v3
-    - name: Print Resource
-      run: sh print_resource.sh
+      - name: free disk space before starting docker
+        run: |
+          rm -rf /opt/hostedtoolcache
+          sh print_resource.sh
+          ls
+          pwd
+      - uses: actions/checkout@v3
+      - name: Print Resource
+        run: sh print_resource.sh
+
     container: 
-     image: aglimage/agl:agl-ubuntu-gcc9.4.0-py3.8-cuda11.8-pytorch2.0.1-0825
-   steps:
-   - name: pwd dir
-   - run: |
-       pwd && ls
+      image: aglimage/agl:agl-ubuntu-gcc9.4.0-py3.8-cuda11.8-pytorch2.0.1-0825
+      options: --privileged
+    steps:
+      - name: pwd dir
+        run: |
+          pwd
+          ls
    
     
     
 #    container: aglimage/agl:agl-ubuntu-gcc9.4.0-py3.8-cuda11.8-pytorch2.0.1-0825
-    steps:
+#    steps:
 #    - uses: actions/checkout@v3
 #    - name: Print Resource
 #      run: sh print_resource.sh
